@@ -8,6 +8,15 @@ pipeline {
         stage("Pipeline"){
             steps {
                 script{
+                    stage("Paso 0: Download and checkout"){
+                            checkout(
+                                [$class: 'GitSCM',
+                                //Acá reemplazar por el nonbre de branch
+                                branches: [[name: "feature-dir-inicial" ]],
+                                //Acá reemplazar por su propio repositorio
+                                userRemoteConfigs: [[url: 'https://github.com/GiseDev/ejemplo_gradle1.git']]])
+                        
+                    }
                     stage("Paso 1: Build && Test"){
                         sh "echo 'Build && Test!'"
                         sh "gradle clean build"
