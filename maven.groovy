@@ -49,10 +49,11 @@ def call(){
   }
   stage("Paso 8: Levantar Artefacto Jar"){
       sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
+      env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg)"
   }
-  ${env.TAREA} = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) "
+  
   stage("${env.TAREA}"){
-      ${env.TAREA} = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) in "
+      env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) in "
       sh "sleep 10 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
 }
