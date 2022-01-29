@@ -44,15 +44,15 @@ def call(){
           ]
       ]
   }
-  ${env.TAREA} = "Paso 7: Descargar Nexus"
-  stage("${env.TAREA}"){
+  stage("Paso 7: Descargar Nexus"){
       sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
   }
   stage("Paso 8: Levantar Artefacto Jar"){
       sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
   }
-  ${env.TAREA} = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) "
+  env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) "
   stage("${env.TAREA}"){
+      env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg) in "
       sh "sleep 10 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
 }
