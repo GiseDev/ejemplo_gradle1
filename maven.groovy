@@ -53,6 +53,8 @@ def call(){
   }
   
   stage("Paso 9: Testear Artefacto - Dormir(Esperar 30sg)"){
+      sh "env"
+      env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 30sg)"
       sh "sleep 30 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
 }
