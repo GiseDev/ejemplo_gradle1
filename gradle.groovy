@@ -49,7 +49,7 @@ def call(){
         env.TAREA = "Paso 6: Levantar Artefacto Jar"
         sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
     }
-    stage("Paso 7: Testear Artefacto - Dormir(Esperar 20sg) "){
+    stage("Paso 7: Testear Artefacto - Dormir(Esperar 40sg) "){
         env.TAREA = "Paso 7: Testear Artefacto"
         sh "sleep 40 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
     }

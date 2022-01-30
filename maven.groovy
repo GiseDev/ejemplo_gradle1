@@ -5,12 +5,11 @@
 */
 def call(){
     env.TAREA =  "Paso 1: Compliar"
-  stage("Paso 1: Compliar"){
+  stage("${env.TAREA}"){
     sh "mvn clea compile -e"
   }
   env.TAREA ="Paso 2: Testear"
-  stage("Paso 2: Testear"){
-
+  stage("${env.TAREA}"){
     sh "mvn clean test -e"
   }
   stage("Paso 3: Build .Jar"){
@@ -54,8 +53,8 @@ def call(){
       env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 20sg)"
   }
   
-  stage("Paso 9: Testear Artefacto - Dormir(Esperar 30sg)"){
-      env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 30sg)"
+  env.TAREA = "Paso 9: Testear Artefacto - Dormir(Esperar 40sg)"
+  stage("${env.TAREA}"){
       sh "sleep 30 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
 }
